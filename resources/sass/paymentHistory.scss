@@ -1,0 +1,43 @@
+.payment{
+    .card-view{
+        .card-space{
+            padding-left: 0px;
+        }
+        .card{
+            box-shadow: 1px 4px 10px -4px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            padding: 15px;
+            .card-body{
+                padding: 0px;
+                .card-subtitle{
+                    color:#198C5F;
+                    font-weight: 500;
+                }
+                .action{
+                    width: 15px;
+                }
+            }
+        }
+    }
+    .mt-4{
+        .listOfContentType{
+            .row{
+                .col-lg-3{
+                    .card{
+                        .card-body{
+                            padding: 0px !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 960px) {
+    .container-fluid{
+        padding: 40px 4px !important;
+    }
+}
+
+

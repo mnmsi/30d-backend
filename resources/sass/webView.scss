@@ -1,0 +1,57 @@
+.parentDiv{
+    .message{
+
+        .backGround{
+            background-position: center;
+            min-height: 200px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: #fff;
+            padding: 15px;
+            position: relative;
+            .tile{
+                position: absolute;
+                bottom: 20px;
+            }
+        }
+        .bodyMessage{
+            background-color: #FFFFFF;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            padding: 68px 8px 27px 37px;
+            width: 100%;
+            margin-top: -14px;
+            z-index: 6666;
+            position: relative;
+
+            h3 {
+                color: #CA0405;
+                font-weight: bold;
+            }
+            p{
+                font-size: 11px;
+                color: black !important;
+                margin: 0px;
+            }
+            .blodP{
+                font-weight: bold;
+            }
+        }
+        .image{
+            img{
+                width: 114px;
+            }
+        }
+        .buttonText{
+            button{
+                background:  linear-gradient(#e52629 0%, #e52629 0.29%, #b71e21 100%);
+                color: #fff;
+                padding: 6px 47px;
+                border-radius: 12px;
+                font-weight: bold;
+            }
+        }
+    }
+
+
+}

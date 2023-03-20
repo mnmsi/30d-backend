@@ -1,0 +1,14 @@
+#logOutbutton{
+   background-color: #f2f6f8;
+    border: none;
+    font-size: 18px;
+    &:hover{
+        color: #00aced;
+        transition: 1s;
+    }
+}
+#userName{
+   a{
+       text-transform: capitalize !important;
+   }
+}
