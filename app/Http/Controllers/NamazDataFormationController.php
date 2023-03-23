@@ -71,12 +71,16 @@ class NamazDataFormationController extends Controller
         $currentYear =  $this->DateFormat($request->timestamp, 'Y');
         $allEvent = [];
         $get = $this->namazRepository->prayerTimeForSpecificDay($currentMonth, $currentYear, $request->lat, $request->lon);
-        foreach ($get->data as $data) {
-            if (!empty($data->date->hijri->holidays)) {
-                $allEvent[] = new MonthAllEventResource($data);
+
+        if($get)
+        {
+            foreach ($get->data as $data) {
+                if (!empty($data->date->hijri->holidays)) {
+                    $allEvent[] = new MonthAllEventResource($data);
+                }
             }
         }
-        return ['status' => true, 'data' => $allEvent ? $allEvent : 'No data available'];
+        return ['status' => true, 'data' => $allEvent ?: []];
     }
 
     private function DateFormat($time, $format)

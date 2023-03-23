@@ -5,6 +5,9 @@
     line-height: 1.5rem;
     font-size: 32px; }
 
+.LoginPage .btn-cursor {
+  cursor: pointer; }
+
 #logOutbutton {
   background-color: #f2f6f8;
   border: none;

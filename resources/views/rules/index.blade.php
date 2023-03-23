@@ -7,7 +7,8 @@
             </div>
             <div class="addNew p-2">
                 {{--      rules will be added          --}}
-                <a href="{{ route('rules.create') }}" class="btn btn-dark"><i class="mdi mr-2 mdi-plus"></i>Add Rules</a>
+                <a href="{{ route('rules.create') }}" class="btn btn-dark"><i class="mdi mr-2 mdi-plus"></i>Add
+                    Rules</a>
             </div>
         </div>
         @if(session()->has('message'))
@@ -22,8 +23,12 @@
                         <ul class="p-0">
                             <li><a class="{{ (request()->is('rules')) ? 'active':'' }} mb-3"
                                    href="{{route('rules')}}">All</a></li>
-                            <li><a href="{{route('rules.specific-items','Ramdan Quiz')}}"  class="{{ (\Request::getRequestUri() == '/rules/quiz-items/Ramdan%20Quiz' ? 'active':'' )}} mb-3">Ramdan Quiz</a></li>
-                            <li><a href="{{route('rules.specific-items','Group Quiz')}}"  class="{{ (\Request::getRequestUri() == '/rules/quiz-items/Group%20Quiz' ? 'active':'' )}} mb-3">Group Quiz</a></li>
+                            <li><a href="{{route('rules.specific-items','ramdan-quiz')}}"
+                                   class="{{ (\Request::getRequestUri() == '/rules/quiz-items/ramdan-quiz' ? 'active':'' )}} mb-3">Ramdan
+                                    Quiz</a></li>
+                            <li><a href="{{route('rules.specific-items','group-quiz')}}"
+                                   class="{{ (\Request::getRequestUri() == '/rules/quiz-items/group-quiz' ? 'active':'' )}} mb-3">Group
+                                    Quiz</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -37,19 +42,26 @@
                                 <div class="card-body">
                                     <div class="d-flex justify-content-between">
                                         <div class="d-flex flex-column card-responsive">
-                                            <label class="card-title text-size font-weight-bold">{{ ($rules ->currentpage()-1) * $rules ->perpage() + $loop->index + 1 }}. {!!  \Illuminate\Support\str::limit(strip_tags($item->title), $limit = 10, $end = '...') !!}</label>
-                                            <label class="card-subtitle mb-2 text-size">{{ $item->categoryType['category_name'] }}</label>
+                                            <label
+                                                class="card-title text-size font-weight-bold">{{ ($rules ->currentpage()-1) * $rules ->perpage() + $loop->index + 1 }}
+                                                . {!!  \Illuminate\Support\str::limit(strip_tags($item->title), $limit = 10, $end = '...') !!}</label>
+                                            <label
+                                                class="card-subtitle mb-2 text-size">{{ $item->categoryType['category_name'] }}</label>
                                         </div>
                                         <div class="d-flex">
-                                            <form action="{{route('rules.status',$item->id)}}" method="post" enctype="multipart/form-data">
+                                            <form action="{{route('rules.status',$item->id)}}" method="post"
+                                                  enctype="multipart/form-data">
                                                 @csrf
                                                 @method('put')
-                                                <button type="submit" class="btn {{$item->status == 1 ? 'rules-active' : 'rules-deactive'}}">{{ $item->status == 1 ? 'ACTIVE' : 'DEACTIVE' }}</button>
+                                                <button type="submit"
+                                                        class="btn {{$item->status == 1 ? 'rules-active' : 'rules-deactive'}}">{{ $item->status == 1 ? 'ACTIVE' : 'DEACTIVE' }}</button>
                                             </form>
                                         </div>
                                         <div class="action flex-row d-flex">
-                                            <a href="{{route('rules.edit', $item->id)}}" class="pr-3"><img src="{{ asset('/img/edit.svg') }}" class="logo-size"/></a>
-                                            <a onclick="deleteItem({{$item->id}})"><img src="{{ asset('/img/delete.svg') }}" class="logo-size"/></a>
+                                            <a href="{{route('rules.edit', $item->id)}}" class="pr-3"><img
+                                                    src="{{ asset('/img/edit.svg') }}" class="logo-size"/></a>
+                                            <a onclick="deleteItem({{$item->id}})"><img
+                                                    src="{{ asset('/img/delete.svg') }}" class="logo-size"/></a>
                                         </div>
                                     </div>
                                     <p class="card-block pt-1 card-text">{!!  \Illuminate\Support\str::limit(strip_tags($item->description), $limit = 150, $end = '...') !!}</p>
@@ -100,19 +112,17 @@
         const appUrl = document.getElementById('appUrl').value;
 
 
-        function deleteItem($id)
-        {
+        function deleteItem($id) {
             const popUp = document.getElementById('popup');
             const deleteFrom = document.getElementById('deleteFrom');
-            popUp.style.display ='block';
+            popUp.style.display = 'block';
             // deleteFrom.action = appUrl+"/news-portal/delete/"+$id;
-            deleteFrom.action = "{{ url()->current() }}/delete/"+ $id;
+            deleteFrom.action = "{{ url()->current() }}/delete/" + $id;
         }
 
-        function remove()
-        {
+        function remove() {
             const popUp = document.getElementById('popup');
-            popUp.style.display ='none';
+            popUp.style.display = 'none';
         }
     </script>
 @endsection

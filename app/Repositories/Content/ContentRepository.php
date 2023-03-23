@@ -208,7 +208,7 @@ class ContentRepository extends \App\Repositories\BasicRepository implements Con
 
     public function postProccessing($data)
     {
-        $base_url = env('APP_URL');
+//        $base_url = env('APP_URL');
 
         $description = $data;
         $dom         = new \DomDocument();
@@ -221,8 +221,8 @@ class ContentRepository extends \App\Repositories\BasicRepository implements Con
 
             $frame->setattribute('src',"https:".$frame->getattribute('src'));
         }
-        foreach ($images as $k => $img) {
-        }
+//        foreach ($images as $k => $img) {
+//        }
         $description = $dom->saveHTML();
         return $description;
     }

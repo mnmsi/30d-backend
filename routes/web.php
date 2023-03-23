@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', [AdminDashboardController::class, 'index'])->name('dashboard');
     Route::post('/logout', [BaseUserController::class, 'logoutUser'])->name('logout');
-    // all life style route are mention bellow
+    // all life-style route are mention bellow
     Route::prefix('life-style')->group(function () {
         Route::get('/', [LifeStyleContentController::class, 'index'])->name('life-style');
         Route::get('/lifeStyle-create-page', [LifeStyleContentController::class, 'lifeStyleCreatePageShow'])->name('life-style-create-page');
@@ -59,7 +59,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('content/{name}', [EducativeController::class, 'educativeContent'])->name('.content');
     });
 
-    /// all News Portal Route are mention bellow
+    // all News Portal Route are mention bellow
     Route::group(['as' => 'newsPortal', 'prefix' => 'news-portal'], function () {
         Route::get('/', [NewsPortalController::class, 'index']);
         Route::get('create', [NewsPortalController::class, 'create'])->name('.create');
@@ -86,7 +86,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/search',[PaymentHistoryController::class,'search'])->name('.search');
     });
 });
-Route::get('/test',[NewsPortalController::class,'test']);
+//Route::get('/test',[NewsPortalController::class,'test']);
 Route::get('/login', [BaseUserController::class, 'LoginPageShow'])->name('login');
 Route::post('/login-check', [BaseUserController::class, 'userLoginCheck'])->name('login-check');
 Route::get('/callback',[MollePaymentController::class,'webView']);

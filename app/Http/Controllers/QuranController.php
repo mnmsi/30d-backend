@@ -26,11 +26,9 @@ class QuranController extends Controller
         $lang = $request->lang;
         try {
             $chapter = $this->quranUlKarim->QuranUlKarimChapter($lang);
-            return ['status'=>1,'data'=>json_decode($chapter)];
-        }
-        catch (\Exception $e)
-        {
-            return [ 'status'=>0,'message'=>'Something went wrong Try again letter'];
+            return ['status' => 1, 'data' => json_decode($chapter)];
+        } catch (\Exception $e) {
+            return ['status' => 0, 'message' => 'Something went wrong Try again letter'];
         }
     }
 
@@ -39,9 +37,19 @@ class QuranController extends Controller
         $chapterId = $request->chapterId;
         $page = $request->page;
         $amount = $request->amount;
-        $result = $this->quranUlKarim->getSpecificChapter($chapterId,$page,$amount);
-        $data =  QuranDataFormatResource::collection($result['verses']);
-        $pagination =   new QuranDataFormatForPagination($result['pagination']);
-        return ['status'=>1,'data'=>$data,'pagination'=>$pagination];
+        $result = $this->quranUlKarim->getSpecificChapter($chapterId, $page, $amount);
+        $data = QuranDataFormatResource::collection($result['verses']);
+        $pagination = new QuranDataFormatForPagination($result['pagination']);
+        return [
+            'status' => 1,
+            'data' => $data,
+            'pagination' => $pagination
+        ];
     }
+
+    /**
+     *
+     * v2 quran api
+     *
+     */
 }

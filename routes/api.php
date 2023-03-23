@@ -57,3 +57,12 @@ Route::post('/mollie-webhook', [MollePaymentController::class, 'webHook']);
 Route::get('/mollie-success', [MollePaymentController::class, 'success']);
 Route::get('/ramadan-calendar', [NamazDataFormationController::class, 'ramadanCalenderFormation']);
 Route::get('/test-content/{id}',[ContentController::class, 'onlyContent']);
+
+
+/**
+ *
+ * v2 quran
+ *
+ */
+
+Route::get('/ayah', []);

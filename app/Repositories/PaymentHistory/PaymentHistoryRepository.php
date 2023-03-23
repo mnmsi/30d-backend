@@ -25,7 +25,7 @@ class PaymentHistoryRepository extends \App\Repositories\BasicRepository impleme
         $value['email'] = $data['email'];
         $value['zakat'] = $data['zakat'];
         $value['sadaqah'] = $data['sadaqah'];
-        $value['status'] = $data['status'];
+//        $value['status'] = $data['status'];
         $value['riba'] = $data['riba'];
         $value->save();
         $result = $value;

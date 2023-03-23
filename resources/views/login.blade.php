@@ -51,7 +51,7 @@
                 @error('email')
                     <p class="text-danger text-center">{{$message}}</p>
                 @enderror
-              <input type="submit" value="Log In" class="btn btn-block btn-primary">
+              <input type="submit" value="Log In" class="btn btn-block btn-primary btn-cursor">
             </form>
             </div>
           </div>

@@ -14,11 +14,12 @@ class QuranDataFormatResource extends JsonResource
      */
     public function toArray($request)
     {
-        //        dd($this);
+//                dd($this);
         return [
             'arabic_text' => $this['text_uthmani'],
             'translation_text' => $this['translations'][0]['text'],
-            'sajdah_type' => $this['sajdah_type'],
+//            'sajdah_type' => $this['sajdah_type'],
+            'ruku_number' => $this['ruku_number'],
             'sajdah_number' => $this['sajdah_number'],
             'audio' => 'https://verses.quran.com/' . $this['audio']['url']
         ];

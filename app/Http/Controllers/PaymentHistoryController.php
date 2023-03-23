@@ -23,8 +23,8 @@ class PaymentHistoryController extends Controller
 
     public function index()
     {
-      $data = $this->model->testController();
-      return view('PaymentHistory.index',['data' => $data]);
+        $data = $this->model->testController();
+        return view('PaymentHistory.index', ['data' => $data]);
     }
 
 
@@ -32,13 +32,11 @@ class PaymentHistoryController extends Controller
     {
 
         try {
-            $data = $request->only('first_name','last_name','email','zakat','sadaqah','riba');
+            $data = $request->only('first_name', 'last_name', 'email', 'zakat', 'sadaqah', 'riba');
             $result = $this->model->createPayment($data);
-            return ['status'=>1,'data'=>'Payment successfully done.'];
-        }
-        catch (\Exception $e)
-        {
-            return ['status'=>0,'message'=>'something went wrong try again letter'];
+            return ['status' => 1, 'data' => 'Payment successfully done.'];
+        } catch (\Exception $e) {
+            return ['status' => 0, 'message' => 'something went wrong try again letter'];
         }
     }
 
@@ -46,6 +44,6 @@ class PaymentHistoryController extends Controller
     public function search(Request $request)
     {
         $data = $this->model->searchData($request->search);
-        return view('PaymentHistory.index',['data' => $data]);
+        return view('PaymentHistory.index', ['data' => $data]);
     }
 }

@@ -8,7 +8,7 @@ use App\Repositories\BasicRepository;
 use App\Repositories\Content\ContentRepositoryInterface;
 use App\Repositories\ContentTypeCategory\ContentTypeCategoryRepositoryInterface;
 
-class LifeStyleRepository  implements LifeStyleRepositoryInterface
+class LifeStyleRepository implements LifeStyleRepositoryInterface
 {
 
     /**
@@ -22,16 +22,16 @@ class LifeStyleRepository  implements LifeStyleRepositoryInterface
 
     public function __construct(
         ContentTypeCategoryRepositoryInterface $contentTypeCategoryRepository,
-        ContentRepositoryInterface $contentRepository
+        ContentRepositoryInterface             $contentRepository
     )
     {
         $this->category = $contentTypeCategoryRepository;
-        $this->content  = $contentRepository;
+        $this->content = $contentRepository;
     }
 
 
     public function getCategoryList()
     {
-            return $this->category->getCategoryList('lifestyle');
+        return $this->category->getCategoryList('lifestyle');
     }
 }
