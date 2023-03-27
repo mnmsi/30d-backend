@@ -21,7 +21,8 @@ class DuaController extends Controller
         $content = $this->duaRepo->getCategoryData();
         return view('dua.index', ['dua' => $dua, 'content' => $content]);
     }
-    public function searchIndex(Request $request,$id)
+
+    public function searchIndex(Request $request, $id)
     {
         $dua = $this->duaRepo->getDua();
         $content = $this->duaRepo->getCategoryData($id);
@@ -82,10 +83,40 @@ class DuaController extends Controller
         }
     }
 
-    public function deleteItem(Request $request,$id)
+    public function deleteItem(Request $request, $id)
     {
-        $item = $this->duaRepo->find($id);
+        $item = $this->duaRepo->getItemWithId($id);
         $item->delete();
         return $item;
+    }
+
+    public function editItem(Request $request, $id)
+    {
+        $dua = $this->duaRepo->getDua();
+        $item = $this->duaRepo->getDuaItem($id);
+
+        return view('dua.editItem', ['dua' => $dua, 'item' => $item]);
+    }
+
+    public function updateItem(Request $request, $id)
+    {
+        try {
+            $validator = Validator::make($request->all(), [
+                'title' => 'required|string',
+                'content_en' => 'required|string',
+                'content_ar' => 'required|string',
+                'category' => 'required|exists:App\Models\Duas,id',
+                'file' => 'nullable|max:500000'
+            ]);
+
+            if ($validator->fails()) {
+                return back()->withInput()->withErrors($validator->errors());
+            }
+            $result = $this->duaRepo->createDuaItems($request->all(),$id);
+            return redirect()->route('dua')->with('message', 'Dua item Added successfully');
+
+        } catch (\Exception $e) {
+            return redirect()->back()->with('message', 'Something went wrong,Please try again letter');
+        }
     }
 }

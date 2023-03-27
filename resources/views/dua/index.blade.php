@@ -51,7 +51,7 @@
                                     <source src="{{asset('storage/'.$c->audio)}}" type="audio/mpeg">
                                 </audio>
                                 <div class="action mt-2">
-                                    <a href="{{route('edit-page-show-life-style',$c->id)}}"
+                                    <a href="{{route('dua.edit-item',$c->id)}}"
                                        class="btn btn-primary">Edit</a>
                                     <a ONCLICK="deleteItem({{$c->id}})" class="btn btn-danger">Delete</a>
                                 </div>

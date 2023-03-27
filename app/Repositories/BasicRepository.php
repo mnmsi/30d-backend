@@ -24,4 +24,9 @@ class BasicRepository
     {
         return $this->model->find($id)->delete();
     }
+
+//    public function find($id)
+//    {
+//        return $this->model->find($id);
+//    }
 }

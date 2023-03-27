@@ -30,13 +30,21 @@ class DuaRepository extends \App\Repositories\BasicRepository implements DuaRepo
         return $dua;
     }
 
-    public function createDuaItems($data)
+    public function createDuaItems($data,$id)
     {
-        $item = $this->duaCat;
+        if($id)
+        {
+            $item = $this->duaCat->find($id);
+        }else{
+            $item = $this->duaCat;
+        }
+
         $item->title = $data['title'];
         $item->ar_text = $data['content_ar'];
         $item->en_text = $data['content_en'];
-        $item->audio = $data['file']->store('dua', 'public');;
+        if(array_key_exists('file',$data)){
+            $item->audio = $data['file']->store('dua', 'public');;
+        }
         $category = $this->model->find($data['category']);
         $item->dua()->associate($category);
         $item->save();
@@ -50,5 +58,10 @@ class DuaRepository extends \App\Repositories\BasicRepository implements DuaRepo
                 $d->where('dua_id', $id);
             })
             ->paginate(15);
+    }
+
+    public function getDuaItem($id)
+    {
+        return $this->duaCat->find($id);
     }
 }
