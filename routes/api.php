@@ -65,4 +65,9 @@ Route::get('/test-content/{id}',[ContentController::class, 'onlyContent']);
  *
  */
 
-Route::get('/ayah', []);
+Route::get('/ayah', [QuranController::class, 'getAllAyah']);
+//Route::get('/test', [QuranController::class, 'getDetails']);
+//Route::get('/get-ayah-by-sura', [QuranController::class, 'getAllAyahBySuraData']);
+//Route::get('/single-ayah-id-rang', [QuranController::class, 'getSingleAyahDetailsByIdRange']);
+
+Route::get('/dua', [QuranController::class, 'getAllAyah']);
