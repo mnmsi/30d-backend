@@ -171,6 +171,12 @@
                             href="{{route('rules')}}" aria-expanded="false"><i
                                 class="fas mr-2 fa-shield-alt"></i><span class="hide-menu">Rules</span></a>
                     </li>
+                    {{--         duas nav       --}}
+                    <li class="sidebar-item"><a
+                            class="sidebar-link waves-effect waves-dark sidebar-link {{ (request()->is('dua*')) ? 'active':'' }}"
+                            href="{{route('dua')}}" aria-expanded="false"><i
+                                class="fas mr-2 fa-sticky-note"></i><span class="hide-menu">Duas</span></a>
+                    </li>
                     <!--  Payment History route not done yet -->
                     <li class="sidebar-item"><a
                             class="sidebar-link waves-effect waves-dark sidebar-link {{ (request()->is('payment-history*')) ? 'active':'' }}"

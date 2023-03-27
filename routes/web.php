@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\BaseUserController;
+use App\Http\Controllers\DuaController;
 use App\Http\Controllers\EducativeController;
 use App\Http\Controllers\HadithContentController;
 use App\Http\Controllers\LifeStyleContentController;
@@ -70,7 +71,7 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     // Rules route
-    Route::group(['as'=>'rules','prefix'=>'rules'],function (){
+    Route::group(['as' => 'rules', 'prefix' => 'rules'], function () {
         Route::get('/', [RulesController::class, 'index']);
         Route::get('/create', [RulesController::class, 'create'])->name('.create');
         Route::post('/create-rules', [RulesController::class, 'createRules'])->name('.create-rules');
@@ -78,15 +79,25 @@ Route::group(['middleware' => 'auth'], function () {
         Route::put('update', [RulesController::class, 'update'])->name('.update');
         Route::delete('delete/{id}', [RulesController::class, 'delete'])->name('.delete');
         Route::get('/quiz-items/{name}', [RulesController::class, 'quizItems'])->name('.specific-items');
-        Route::put('/status/{id}',[RulesController::class,'statusUpdate'])->name('.status');
+        Route::put('/status/{id}', [RulesController::class, 'statusUpdate'])->name('.status');
     });
     // Payment History Route
-    Route::group(['as' => 'payment-history','prefix'=>'payment-history'],function(){
-       Route::get('/',[PaymentHistoryController::class,'index']);
-        Route::post('/search',[PaymentHistoryController::class,'search'])->name('.search');
+    Route::group(['as' => 'payment-history', 'prefix' => 'payment-history'], function () {
+        Route::get('/', [PaymentHistoryController::class, 'index']);
+        Route::post('/search', [PaymentHistoryController::class, 'search'])->name('.search');
+    });
+
+    Route::group(['as' => 'dua', 'prefix' => 'dua'], function () {
+        Route::get('/', [DuaController::class, 'index']);
+        Route::get('/add', [DuaController::class, 'add'])->name('.add');
+        Route::post('/store', [DuaController::class, 'store'])->name('.store');
+        Route::get('/add/item', [DuaController::class, 'addItem'])->name('.add-item');
+        Route::post('/store/item', [DuaController::class, 'storeItem'])->name('.store-item');
+        Route::post('/item/{id}', [DuaController::class, 'deleteItem'])->name('.store-item');
+        Route::get('/{id}', [DuaController::class, 'searchIndex'])->name('.search');
     });
 });
 //Route::get('/test',[NewsPortalController::class,'test']);
 Route::get('/login', [BaseUserController::class, 'LoginPageShow'])->name('login');
 Route::post('/login-check', [BaseUserController::class, 'userLoginCheck'])->name('login-check');
-Route::get('/callback',[MollePaymentController::class,'webView']);
+Route::get('/callback', [MollePaymentController::class, 'webView']);

@@ -5,6 +5,8 @@ namespace App\Providers;
 use App\Models\Content;
 use App\Models\ContentType;
 use App\Models\ContentTypeCategory;
+use App\Models\Duas;
+use App\Models\DuasCategory;
 use App\Models\HadithContent;
 use App\Models\MetalConvertablePrice;
 use App\Models\NewsPortal;
@@ -20,6 +22,8 @@ use App\Repositories\Content\ContentRepository;
 use App\Repositories\Content\ContentRepositoryInterface;
 use App\Repositories\Converter\ConverterRepository;
 use App\Repositories\Converter\ConverterRepositoryInterface;
+use App\Repositories\Dua\DuaRepository;
+use App\Repositories\Dua\DuaRepositoryInterface;
 use App\Repositories\Educative\EducativeRepository;
 use App\Repositories\Educative\EducativeRepositoryInterface;
 use App\Repositories\Hadith\HadithRepository;
@@ -147,6 +151,10 @@ class RepositoryServiceProvider extends ServiceProvider
 
         $this->app->singleton(PaymentHistoryRepositoryInterface::class,function ($app){
             return new PaymentHistoryRepository(new PaymentHistory());
+        });
+//        dua
+        $this->app->singleton(DuaRepositoryInterface::class,function (){
+            return new DuaRepository(new Duas(), new DuasCategory());
         });
     }
 
