@@ -67,6 +67,17 @@
                 </div>
             </a>
         </div>
+        <div class="col-xl-4 col-md-4 col-lg-4 col-sm-12 mb-3">
+            <a href="{{route('dua')}}">
+                <div class="cardBox  d-flex justify-content-between  align-items-center">
+                    <div>
+                        <h5>Dua</h5>
+                        <p class="mt-4">Total Dua : <span>{{$dua ?? 0}}</span> </p>
+                    </div>
+                    <i class="fas mr-2 fa-sticky-note"></i>
+                </div>
+            </a>
+        </div>
 
     </div>
 @endsection

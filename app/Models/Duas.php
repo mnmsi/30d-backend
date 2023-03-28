@@ -14,4 +14,13 @@ class Duas extends Model
     {
         return $this->hasMany(DuasCategory::class,'dua_id');
     }
+
+    public function getImageAttribute($value)
+    {
+        if (!empty($value)) {
+            return asset('/storage/' . $value);
+        } else {
+            return "";
+        }
+    }
 }

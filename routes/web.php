@@ -93,7 +93,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::post('/store', [DuaController::class, 'store'])->name('.store');
         Route::get('/add/item', [DuaController::class, 'addItem'])->name('.add-item');
         Route::post('/store/item', [DuaController::class, 'storeItem'])->name('.store-item');
-        Route::post('/item/{id}', [DuaController::class, 'deleteItem'])->name('.store-item');
+        Route::delete('/delete/{id}', [DuaController::class, 'deleteItem'])->name('.delete-item');
         Route::get('/edit/{id}', [DuaController::class, 'editItem'])->name('.edit-item');
         Route::post('/update/{id}', [DuaController::class, 'updateItem'])->name('.update-item');
         Route::get('/{id}', [DuaController::class, 'searchIndex'])->name('.search');

@@ -60,7 +60,7 @@
                     </div>
                 @empty
                     <div class="col-lg-3 col-xl-3 col-md-3 col-sm-12">
-                        <div class="card w-100">
+                        <div class="card w-100 py-4 text-center">
                             No data found
                         </div>
                     </div>
@@ -81,7 +81,7 @@
                             </div>
                             <div class="d-flex justify-content-center submit mt-4">
                                 <div>
-                                    <form action="" id="deleteFrom" method="post">
+                                    <form id="deleteFrom" method="post">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class=" btn btn-danger">Yes</button>
@@ -112,7 +112,8 @@
         {
             const deleteFrom = document.getElementById('deleteFrom');
             popUp.style.display ='block';
-            deleteFrom.action = appUrl+"/dua/item/"+$id;
+            // deleteFrom.action = appUrl+"/dua/delete/"+$id;
+            deleteFrom.action = "{{ url()->current() }}/delete/" + $id;
         }
         function remove()
         {

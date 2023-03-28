@@ -3,6 +3,7 @@
 use App\Http\Controllers\BaseUserController;
 use App\Http\Controllers\ContentCategoryController;
 use App\Http\Controllers\ContentTypeController;
+use App\Http\Controllers\DuaController;
 use App\Http\Controllers\HadithContentController;
 use App\Http\Controllers\MetalPriceConverterController;
 use App\Http\Controllers\MollePaymentController;
@@ -70,4 +71,4 @@ Route::get('/ayah', [QuranController::class, 'getAllAyah']);
 //Route::get('/get-ayah-by-sura', [QuranController::class, 'getAllAyahBySuraData']);
 //Route::get('/single-ayah-id-rang', [QuranController::class, 'getSingleAyahDetailsByIdRange']);
 
-Route::get('/dua', [QuranController::class, 'getAllAyah']);
+Route::get('/dua-list', [DuaController::class, 'getAllDuaWithCategory']);

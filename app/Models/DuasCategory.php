@@ -14,4 +14,13 @@ class DuasCategory extends Model
     {
         return $this->belongsTo(Duas::class,'dua_id');
     }
+
+    public function getAudioAttribute($value)
+    {
+        if (!empty($value)) {
+            return asset('/storage/' . $value);
+        } else {
+            return "";
+        }
+    }
 }

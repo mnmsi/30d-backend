@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\Content\ContentRepositoryInterface;
+use App\Repositories\Dua\DuaRepositoryInterface;
 use App\Repositories\Hadith\HadithRepositoryInterface;
 use App\Repositories\lifeStyle\LifeStyleRepositoryInterface;
 use App\Repositories\NewsPortal\NewsPortalRepositoryInterface;
@@ -33,12 +34,15 @@ class AdminDashboardController extends Controller
      */
     private $payment;
 
+    private $duaRepo;
+
     public function __construct(
         ContentRepositoryInterface $contentRepository,
         HadithRepositoryInterface $hadithRepository,
         NewsPortalRepositoryInterface $newsPortalRepository,
         RulesRepositoryInterface $rulesRepository,
-        PaymentHistoryRepositoryInterface $paymentHistoryRepository
+        PaymentHistoryRepositoryInterface $paymentHistoryRepository,
+        DuaRepositoryInterface $duaRepository
     )
     {
         $this->content = $contentRepository;
@@ -46,6 +50,7 @@ class AdminDashboardController extends Controller
         $this->news = $newsPortalRepository;
         $this->rules = $rulesRepository;
         $this->payment = $paymentHistoryRepository;
+        $this->duaRepo = $duaRepository;
     }
     public function index()
     {
@@ -55,13 +60,15 @@ class AdminDashboardController extends Controller
         $news = $this->news->newsCount();
         $rules = $this->rules->rulesCount();
         $payment =$this->payment->totalPaymentCount();
+        $dua = $this->duaRepo->totalDuaItems();
         return view('pages.newDashboard',[
             'life'=>$life,
             'educate'=>$educate,
             'hadith'=>$hadith,
             'news'=>$news,
             'rules' => $rules,
-            'payment' => $payment
+            'payment' => $payment,
+            'dua' => $dua
         ]);
     }
 }

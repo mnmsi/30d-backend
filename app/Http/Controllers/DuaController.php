@@ -85,9 +85,9 @@ class DuaController extends Controller
 
     public function deleteItem(Request $request, $id)
     {
-        $item = $this->duaRepo->getItemWithId($id);
+        $item = $this->duaRepo->getDuaItem($id);
         $item->delete();
-        return $item;
+        return redirect()->back()->with('message', 'Item delete successfully');
     }
 
     public function editItem(Request $request, $id)
@@ -118,5 +118,10 @@ class DuaController extends Controller
         } catch (\Exception $e) {
             return redirect()->back()->with('message', 'Something went wrong,Please try again letter');
         }
+    }
+
+    public function getAllDuaWithCategory()
+    {
+        return $this->duaRepo->duaWithCategory();
     }
 }
