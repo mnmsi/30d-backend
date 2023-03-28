@@ -168,7 +168,29 @@ trait QuranTrait
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://api.alquran.cloud/v1/ayah/'. $id .'/editions/quran-uthmani,en.asad',
+            CURLOPT_URL => 'https://api.alquran.cloud/v1/ayah/' . $id . '/editions/quran-uthmani,en.asad',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'GET',
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+        return json_decode($response, true);
+    }
+
+    public function getArabicCalender($m,$y)
+    {
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'http://api.aladhan.com/v1/gToHCalendar/'. $m .'/' . $y,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,

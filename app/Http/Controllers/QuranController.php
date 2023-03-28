@@ -6,9 +6,11 @@ use App\Http\Resources\Quran\QuranDataFormatForPagination;
 use App\Http\Resources\Quran\QuranDataFormatResource;
 use App\Repositories\Quran\QuranRepositoryInterface;
 use App\Traits\QuranTrait;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 use mysql_xdevapi\Exception;
 
 class QuranController extends Controller
@@ -81,10 +83,11 @@ class QuranController extends Controller
         }
     }
 
-//    public function getDetails()
-//    {
-//        return $this->getAudioByName(1, 3, 'ar.abdulbasitmurattal');
-//    }
+    public function getJsonFile()
+    {
+        $path = storage_path() . "/file/Quran_Ayah.json";
+        return json_decode(file_get_contents($path), true);
+    }
 
     public function getAllAyahBySuraData(Request $request)
     {
@@ -138,5 +141,44 @@ class QuranController extends Controller
             ];
         }
         return $result;
+    }
+
+    public function getArabicMonth(Request $request)
+    {
+        try {
+            $validator = Validator::make($request->all(), [
+                'date' => 'required|date',
+            ]);
+
+            if ($validator->fails()) {
+                return [
+                    'status' => 0,
+                    'error' => $validator->errors()
+                ];
+            }
+            $date = Carbon::parse($request->date);
+            $month_date = array();
+            $api_month = $this->getArabicCalender($date->month, $date->year);
+            foreach ($api_month['data'] as $m) {
+                if (count($m['hijri']['holidays'])) {
+                    $month_date[] = [
+                        'en_month' => $m['gregorian']['date'],
+                        'en_date' => $m['gregorian']['month'],
+                        'ar_month' => $m['hijri']['date'],
+                        'ar_date' => $m['hijri']['month'],
+                        'text' => $m['hijri']['holidays']
+                    ];
+                }
+            }
+            return [
+                'status' => 1,
+                'data' => $month_date,
+            ];
+        } catch (\Exception $e) {
+            return [
+                'status' => 0,
+                'error' => $e->getMessage()
+            ];
+        }
     }
 }

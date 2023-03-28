@@ -67,8 +67,12 @@ Route::get('/test-content/{id}',[ContentController::class, 'onlyContent']);
  */
 
 Route::get('/ayah', [QuranController::class, 'getAllAyah']);
+Route::get('/ayah-file', [QuranController::class, 'getJsonFile']);
 //Route::get('/test', [QuranController::class, 'getDetails']);
 //Route::get('/get-ayah-by-sura', [QuranController::class, 'getAllAyahBySuraData']);
 //Route::get('/single-ayah-id-rang', [QuranController::class, 'getSingleAyahDetailsByIdRange']);
 
 Route::get('/dua-list', [DuaController::class, 'getAllDuaWithCategory']);
+Route::get('/calender', [QuranController::class, 'getArabicMonth']);
+
+
