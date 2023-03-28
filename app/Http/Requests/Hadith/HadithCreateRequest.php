@@ -29,7 +29,7 @@ class HadithCreateRequest extends FormRequest
             'medium_description'=>'required|string',
             'visible_time'=>'required|unique:hadith_contents,visible_time|date_format:Y-m-d',
             'content'=>'required|string',
-            'image'=>'required|mimes:jpeg,jpg,png,gif|max:5000'
+            'image'=>'required|mimes:jpeg,jpg,png,gif,svg|max:5000'
         ];
     }
     public function messages()

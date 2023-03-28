@@ -28,7 +28,7 @@
                         @enderror
                         {{--                        /// category--}}
                         <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Short Description</label>
+                            <label for="exampleFormControlTextarea1">Sub Title</label>
                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
                                       placeholder="Write Short Description" name="short_description"
                                       >{{$data->short_description}}</textarea>
@@ -39,7 +39,7 @@
                         {{--                        // short description --}}
 
                         <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Medium Description</label>
+                            <label for="exampleFormControlTextarea1">Description</label>
                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
                                       placeholder="Write Short Description" name="medium_description"
                                       >{{$data->medium_description}}</textarea>
@@ -49,7 +49,7 @@
                         @enderror
 
                         <div class="form-group">
-                            <label for="example-date-input" class="col-2 col-form-label">Date</label>
+                            <label for="example-date-input" class="col-2 col-form-label">View Date</label>
                             <input class="form-control" type="date" value="{{ $data->visible_time}}" id="example-date-input" name="visible_time">
                         </div>
                         @error('visible_time')
@@ -70,7 +70,7 @@
                         </div>
                         <div class="image-preview mt-3 mb-3" id="previewTwo">
                             <h5 class=" pb-2">Image Preview</h5>
-                            <img src="{{asset('storage/'.$data->featured_image)}}" alt="" id="outputTwo" class="w-100"/>
+                            <img src="{{$data->featured_image}}" alt="" id="outputTwo" class="w-auto"/>
                         </div>
                     </div>
 
@@ -78,7 +78,7 @@
                     <div class="col-6 s-12">
                         {{--                        /// content --}}
                         <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Description</label>
+                            <label for="exampleFormControlTextarea1">Description Arabic</label>
                             <textarea class="form-control summernote" id="exampleFormControlTextarea1 description"
                                       rows="3" placeholder="Write Content" name="content" >{{$data->description}}</textarea>
                         </div>

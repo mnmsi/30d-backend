@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class HadithContent extends Model
 {
     use HasFactory;
+
+    public function getFeaturedImageAttribute($value)
+    {
+        if (!empty($value)) {
+            return asset('/storage/' . $value);
+        } else {
+            return "";
+        }
+    }
 }

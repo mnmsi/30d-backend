@@ -73,8 +73,8 @@ class HadithContentController extends Controller
 
     public function hadithGet(Request $request)
     {
-        $time = $request->timestamp / 1000;
-        $currentDay = $this->DateFormat($time,'Y-m-d');
+        $currentDay = $this->DateFormat($request->date,'Y-m-d');
+
         $result = $this->hadith->getHadtihToday($currentDay);
         $final =$result ? new HadithResource($result):['message'=>'No data for today'];
 
@@ -83,6 +83,6 @@ class HadithContentController extends Controller
 
     private function DateFormat($time,$format)
     {
-        return  Carbon::createFromTimestamp($time)->format($format);
+        return  Carbon::parse($time)->format($format);
     }
 }

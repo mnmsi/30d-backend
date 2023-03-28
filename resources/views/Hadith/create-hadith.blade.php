@@ -27,7 +27,7 @@
                         @enderror
                         {{--                        /// category--}}
                         <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Short Description</label>
+                            <label for="exampleFormControlTextarea1">Sub Description</label>
                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
                                       placeholder="Write Short Description" name="short_description"
                                       required></textarea>
@@ -38,7 +38,7 @@
                         {{--                        // short description --}}
 
                         <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Medium Description</label>
+                            <label for="exampleFormControlTextarea1">Description</label>
                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
                                       placeholder="Write Short Description" name="medium_description"
                                       required></textarea>
@@ -48,7 +48,7 @@
                         @enderror
 
                         <div class="form-group">
-                            <label for="example-date-input" class="col-2 col-form-label">Date</label>
+                            <label for="example-date-input" class="col-2 col-form-label px-0">View Date</label>
                             <input class="form-control" type="date" value="{{ date('Y-m-d') }}" id="example-date-input" name="visible_time">
                         </div>
                         @error('visible_time')
@@ -71,7 +71,7 @@
                     <div class="col-6 s-12">
                         {{--                        /// content --}}
                         <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Description</label>
+                            <label for="exampleFormControlTextarea1">Description Arabic</label>
                             <textarea class="form-control summernote" id="exampleFormControlTextarea1 description"
                                       rows="3" placeholder="Write Content" name="content" required></textarea>
                         </div>

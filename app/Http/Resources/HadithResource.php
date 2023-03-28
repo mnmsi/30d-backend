@@ -17,14 +17,14 @@ class HadithResource extends JsonResource
         return [
             'id'=>$this->id,
             'title'=>$this->title,
-            'short_description' =>$this->short_description,
-            'medium_description' =>$this->medium_description,
-            'description' =>$this->description,
-            'featured_image' =>$this->featured_image,
-            'visible_time' =>$this->visible_time,
-            'created_at' =>$this->created_at,
-            'updated_at' =>$this->updated_at,
-            'type'=>'text'
+            'sub_title' =>$this->short_description,
+            'description_en' =>$this->medium_description,
+            'description_ar' =>$this->description,
+            'image' =>$this->featured_image,
+            'data' =>$this->visible_time,
+//            'created_at' =>$this->created_at,
+//            'updated_at' =>$this->updated_at,
+//            'type'=>'text'
         ];
     }
 }

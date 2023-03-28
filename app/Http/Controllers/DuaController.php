@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\DuaResource;
 use App\Repositories\Dua\DuaRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -122,6 +123,9 @@ class DuaController extends Controller
 
     public function getAllDuaWithCategory()
     {
-        return $this->duaRepo->duaWithCategory();
+        return [
+            'status' => 1,
+            'data' => DuaResource::collection($this->duaRepo->duaWithCategory())
+        ];
     }
 }

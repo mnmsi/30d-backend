@@ -76,6 +76,6 @@ class DuaRepository extends \App\Repositories\BasicRepository implements DuaRepo
             ->withCount('category')
             ->where('status', 1)
             ->havingRaw('category_count > 0')
-            ->paginate(20);
+            ->get();
     }
 }

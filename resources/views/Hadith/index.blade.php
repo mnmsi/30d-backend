@@ -18,14 +18,13 @@
     @endif
     <div class="row mt-3">
         @foreach($contents as $content)
-            {{--                    {{dd($content)->toArray()}}--}}
             <div class="col-lg-3 col-xl-3 col-md-3 col-sm-12">
                 <div class="card w-100">
                     <div class="tag p-2">
                         <p>{{   Carbon\Carbon::parse($content->visible_time)->format('d M y') }}</p>
                     </div>
                     <img class="card-img-top w-100"
-                         src="{{asset('storage/'.$content->featured_image)}}"
+                         src="{{$content->featured_image}}"
                          alt="Card image cap ">
                     <div class="card-body">
                         <p class="card-text">{{$content->title}}</p>
