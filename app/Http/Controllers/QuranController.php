@@ -85,13 +85,11 @@ class QuranController extends Controller
 
     public function getJsonFile()
     {
-        $path = storage_path() . "/file/Quran_Ayah.json";
-        return json_decode(file_get_contents($path), true);
+        return json_decode(file_get_contents(public_path('file/Quran_Ayah.json')), true);
     }
 
     public function getAllAyahBySuraData(Request $request)
     {
-//        ini_set('max_execution_time', -1);
         $data = $this->getSuraDetailsWithAyah($request->id);
         $result = array();
 
