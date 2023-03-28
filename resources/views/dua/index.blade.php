@@ -42,13 +42,13 @@
                                 <p>{{$c->dua->title}}</p>
                             </div>
                             <img class="card-img-top w-100"
-                                 src="{{asset('storage/'.$c->dua->image)}}"
+                                 src="{{$c->dua->image}}"
                                  alt="Card image cap ">
 
                             <div class="card-body">
                                 <p class="card-text">{{$c->title}}</p>
                                 <audio controls>
-                                    <source src="{{asset('storage/'.$c->audio)}}" type="audio/mpeg">
+                                    <source src="{{$c->audio}}" type="audio/mpeg">
                                 </audio>
                                 <div class="action mt-2">
                                     <a href="{{route('dua.edit-item',$c->id)}}"
