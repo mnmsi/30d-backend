@@ -40,7 +40,7 @@ class DuaController extends Controller
             $validator = Validator::make($request->all(), [
                 'title' => 'required|string',
                 'description' => 'required|string',
-                'image' => 'required|mimes:jpeg,jpg,png|max:5000'
+                'image' => 'required|mimes:jpeg,jpg,png,svg|max:5000'
             ]);
 
             if ($validator->fails()) {
