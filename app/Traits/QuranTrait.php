@@ -85,7 +85,7 @@ trait QuranTrait
             ],
             [
                 "name" => "Abdul Samad",
-                "image" => url('/reciter/abdul_basit.jpg'),
+                "image" => url('/reciter/abdul_samad.jpg'),
                 "language" => "ar",
                 "audio" => 'https://cdn.islamic.network/quran/audio/64/ar.abdulsamad/' . $ayah . '.mp3'
             ],
