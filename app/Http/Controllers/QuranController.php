@@ -157,15 +157,20 @@ class QuranController extends Controller
             $date = Carbon::parse($request->date);
             $month_date = array();
             $api_month = $this->getArabicCalender($date->month, $date->year);
+
             foreach ($api_month['data'] as $m) {
                 if (count($m['hijri']['holidays'])) {
-                    $month_date[] = [
-                        'en_month' => $m['gregorian']['date'],
-                        'en_date' => $m['gregorian']['month'],
-                        'ar_month' => $m['hijri']['date'],
-                        'ar_date' => $m['hijri']['month'],
-                        'text' => $m['hijri']['holidays']
-                    ];
+                    foreach ($m['hijri']['holidays'] as $text)
+                    {
+                        $month_date[] = [
+                            'en_month' => $m['gregorian']['date'],
+                            'en_date' => $m['gregorian']['month'],
+                            'ar_month' => $m['hijri']['date'],
+                            'ar_date' => $m['hijri']['month'],
+                            'text' => $text,
+//                            'text' => $m['hijri']['holidays']
+                        ];
+                    }
                 }
             }
             return [
