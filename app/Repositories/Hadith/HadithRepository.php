@@ -30,7 +30,8 @@ class HadithRepository extends \App\Repositories\BasicRepository implements Hadi
         $value['short_description'] = $data['short_description'];
         $value['medium_description'] = $data['medium_description'];
         $value['visible_time'] = $data['visible_time'];
-        $value['description'] = $this->content->convertFile($data);
+//        $value['description'] = $this->content->convertFile($data);
+        $value['description'] = $data['content'];
         $value['featured_image'] = $data['image']->store('hadith','public');
         $value->save();
         return $value;
@@ -51,7 +52,8 @@ class HadithRepository extends \App\Repositories\BasicRepository implements Hadi
         {
             $value['visible_time'] = $data['visible_time'];
         }
-        $value['description'] = $this->content->convertFile($data);
+//        $value['description'] = $this->content->convertFile($data);
+        $value['description'] = $data['content'];
         if (!empty($data['image']))
         {
             Storage::disk('public')->delete($value->featured_image);

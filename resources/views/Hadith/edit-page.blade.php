@@ -78,10 +78,16 @@
                     <div class="col-6 s-12">
                         {{--                        /// content --}}
                         <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Description Arabic</label>
-                            <textarea class="form-control summernote" id="exampleFormControlTextarea1 description"
-                                      rows="3" placeholder="Write Content" name="content" >{{$data->description}}</textarea>
+                            <label for="exampleFormControlTextarea2">Description Arabic</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea2" rows="3"
+                                      placeholder="Write Short Description" name="content"
+                            >{{$data->description}}</textarea>
                         </div>
+{{--                        <div class="form-group">--}}
+{{--                            <label for="exampleFormControlTextarea1">Description Arabic</label>--}}
+{{--                            <textarea class="form-control summernote" id="exampleFormControlTextarea1 description"--}}
+{{--                                      rows="3" placeholder="Write Content" name="content" >{{$data->description}}</textarea>--}}
+{{--                        </div>--}}
                         @error('content')
                         <p class="mb-0 pb-4 text-caption text-danger">{{ $message }}</p>
                         @enderror
