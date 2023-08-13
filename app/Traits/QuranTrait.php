@@ -186,11 +186,12 @@ trait QuranTrait
 
     public function getArabicCalender($m,$y)
     {
+//            CURLOPT_URL => 'http://api.aladhan.com/v1/gToHCalendar/'. $m .'/' . $y,
 
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => 'http://api.aladhan.com/v1/gToHCalendar/'. $m .'/' . $y,
+            CURLOPT_URL => 'http://api.aladhan.com/v1/hToGCalendar/'. $m .'/' . $y,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,

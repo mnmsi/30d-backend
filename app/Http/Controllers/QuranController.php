@@ -168,7 +168,6 @@ class QuranController extends Controller
                             'ar_month' => $m['hijri']['date'],
                             'ar_date' => $m['hijri']['month'],
                             'text' => $text,
-//                            'text' => $m['hijri']['holidays']
                         ];
                     }
                 }
